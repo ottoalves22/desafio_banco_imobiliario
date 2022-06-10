@@ -1,0 +1,2 @@
+class Tabuleiro:
+    pass
