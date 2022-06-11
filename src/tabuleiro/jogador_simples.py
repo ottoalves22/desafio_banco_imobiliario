@@ -9,5 +9,7 @@ class JogadorSimples:
         self.estrategia = estrategia
         self.derrota = False
 
-    def recebe_vende(self, propriedade: Propriedade):
-        pass
+    def paga(self, preco):
+        self.saldo -= preco
+        if self.saldo <= 0:
+            self.derrota = True

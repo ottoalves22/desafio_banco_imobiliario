@@ -35,10 +35,9 @@ class Tabuleiro:
                     vencedor = p
             return vencedor
 
-    def jogada(self, jogador: JogadorSimples, tab):
+    def jogada(self, jogador: JogadorSimples):
         if jogador.saldo > 0: # checa o saldo do candango
             propriedade_atual = self.propriedades[self.caminha(jogador)]
-            jogador.recebe_vende(propriedade_atual, tab)
+            jogador.paga(propriedade_atual.aluguel)
         else:
             jogador.derrota = True
-            return
