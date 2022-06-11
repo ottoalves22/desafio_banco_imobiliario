@@ -43,5 +43,7 @@ class Tabuleiro:
         return randint(1, 6)
 
     def retira_jogador(self, jogador: JogadorSimples):
-        pass
-        #ACHO QUEO TYPE_STRATEGY é o dono...
+        for p in self.propriedades: # desapropria o jogador de todas propriedades
+            if p.proprietario == jogador:
+                p.proprietario = None
+        self.jogadores.remove(jogador)
