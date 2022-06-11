@@ -5,3 +5,5 @@ class Propriedade:
         self.id = id
         self.aluguel = randint(45, 150)
         self.venda = randint(45, 150)
+
+    

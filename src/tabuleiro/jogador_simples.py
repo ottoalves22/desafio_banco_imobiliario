@@ -1,4 +1,5 @@
 from sqlalchemy import false
+from propriedade import Propriedade
 
 
 class JogadorSimples:
@@ -8,7 +9,5 @@ class JogadorSimples:
         self.estrategia = estrategia
         self.derrota = False
 
-    def paga(self, preco):
-        self.saldo -= preco
-        if self.saldo == 0:
-            self.derrota = True
+    def recebe_vende(self, propriedade: Propriedade):
+        pass
