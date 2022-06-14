@@ -1,22 +1,22 @@
 from javaproperties import Properties
 from sqlalchemy import false
-from propriedade import Propriedade
+from .propriedade import Propriedade
 
 
 class JogadorSimples:
-    def __init__(self, estrategia) -> None:
+    def __init__(self) -> None:
         self.saldo = 300
         self.posicao = 0
-        self.estrategia = estrategia
         self.derrota = False
 
     def paga(self, propriedade: Propriedade, compra=False):
         if compra == False:
-            valor_transacao = self.saldo - propriedade.aluguel
-            self.saldo -= propriedade.aluguel
-            if self.saldo <= 0:
-                self.derrota = True
-            propriedade.proprietario.saldo += valor_transacao # caso o pagador perca o dinheiro restante vem para o proprietario de toda forma
+            if propriedade.proprietario:
+                valor_transacao = self.saldo - propriedade.aluguel
+                self.saldo -= propriedade.aluguel
+                if self.saldo <= 0:
+                    self.derrota = True
+                propriedade.proprietario.saldo += valor_transacao # caso o pagador perca o dinheiro restante vem para o proprietario de toda forma
         else:
             self.saldo -= propriedade.venda
             if self.saldo <= 0:

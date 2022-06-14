@@ -1,6 +1,7 @@
+import datetime
 from random import randint
-from propriedade import Propriedade
-from jogador_simples import JogadorSimples
+from .propriedade import Propriedade
+from .jogador_simples import JogadorSimples
 
 
 class Tabuleiro:
@@ -13,7 +14,7 @@ class Tabuleiro:
     def jogada(self, jogador: JogadorSimples):
         if jogador.saldo > 0:  # checa o saldo do candango
             propriedade_atual = self.propriedades[self.caminha(jogador)]
-            jogador.paga(propriedade_atual.aluguel)
+            jogador.paga(propriedade_atual)
         else:
             jogador.derrota = True
 
@@ -34,7 +35,7 @@ class Tabuleiro:
             dinheiro = 0
             for p in self.jogadores:  # itera nos jogadores e ve qual é o com mais saldo
                 if dinheiro < p.saldo:
-                    dinheiro = p.dinheiro
+                    dinheiro = p.saldo
                     vencedor = p
             return vencedor
 
@@ -47,3 +48,21 @@ class Tabuleiro:
             if p.proprietario == jogador:
                 p.proprietario = None
         self.jogadores.remove(jogador)
+
+    def fim_de_jogo(self, timeout: int):
+        if self.rodadas > timeout:
+            return {
+                "vencedor": self.vencedor,
+                "saldo vencedor": self.vencedor.saldo,
+                "rodadas": self.rodadas,
+                "estrategia": str(type(self.vencedor)),
+                "timeout": True,
+            }
+        else:
+            return {
+                "vencedor": self.vencedor,
+                "saldo vencedor": self.vencedor.saldo,
+                "rodadas": self.rodadas,
+                "estrategia": str(type(self.vencedor)),
+                "timeout": False,
+            }
