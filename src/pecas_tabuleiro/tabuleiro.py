@@ -55,7 +55,7 @@ class Tabuleiro:
                 "vencedor": self.vencedor,
                 "saldo vencedor": self.vencedor.saldo,
                 "rodadas": self.rodadas,
-                "estrategia": str(type(self.vencedor)),
+                "estrategia": self.vencedor.tipo,
                 "timeout": True,
             }
         else:
