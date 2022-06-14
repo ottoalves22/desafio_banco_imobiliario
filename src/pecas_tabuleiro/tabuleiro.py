@@ -50,7 +50,7 @@ class Tabuleiro:
         self.jogadores.remove(jogador)
 
     def fim_de_jogo(self, timeout: int):
-        if self.rodadas > timeout:
+        if self.rodadas >= timeout:
             return {
                 "vencedor": self.vencedor,
                 "saldo vencedor": self.vencedor.saldo,
@@ -63,6 +63,6 @@ class Tabuleiro:
                 "vencedor": self.vencedor,
                 "saldo vencedor": self.vencedor.saldo,
                 "rodadas": self.rodadas,
-                "estrategia": str(type(self.vencedor)),
+                "estrategia": self.vencedor.tipo,
                 "timeout": False,
             }

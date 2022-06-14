@@ -4,6 +4,7 @@ from .propriedade import Propriedade
 class JogadorImpulsivo(JogadorSimples): 
     # O jogador impulsivo compra qualquer propriedade sobre a qual ele parar.
     #override metodo de compra pra comprar sempre
+    tipo = ' Impulsivo'
 
     def compra_aluguel(self, propriedade: Propriedade, compra=False):
         if propriedade.proprietario:

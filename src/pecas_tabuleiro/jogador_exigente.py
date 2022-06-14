@@ -2,7 +2,8 @@ from random import randint
 from .jogador_simples import JogadorSimples
 from .propriedade import Propriedade
 
-class JogadorExigente(JogadorSimples): 
+class JogadorExigente(JogadorSimples):
+    tipo = 'Exigente' 
     def compra_aluguel(self, propriedade: Propriedade, compra=False):
         if propriedade.proprietario:
             if propriedade.proprietario == self: #propriedade já deste jogador

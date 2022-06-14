@@ -1,7 +1,8 @@
 from .jogador_simples import JogadorSimples
 from .propriedade import Propriedade
 
-class JogadorCuidadoso(JogadorSimples): 
+class JogadorCuidadoso(JogadorSimples):
+    tipo = 'Cuidados' 
     def compra_aluguel(self, propriedade: Propriedade, compra=False):
         if propriedade.proprietario:
             if propriedade.proprietario == self: #propriedade já deste jogador

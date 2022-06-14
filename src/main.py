@@ -15,6 +15,7 @@ def main():
         tab = tabuleiro_handler.cria_tabuleiro()
         while tab.vencedor is None:
             for j in tab.jogadores:
+                tab.rodadas += 1
                 if j.derrota:
                     tab.retira_jogador(j)
                 ganhador = tab.verifica_ganhador(j)
@@ -22,10 +23,11 @@ def main():
                     tab.vencedor = ganhador
                     break
                 tab.jogada(j)
-            tab.rodadas += 1
         resultados_jogos.append(tab.fim_de_jogo(timeout))
 
     # falta exibir estatisticas do jeito correto
+    for i in resultados_jogos:
+        print(i)
 
 
 if __name__ == "__main__":

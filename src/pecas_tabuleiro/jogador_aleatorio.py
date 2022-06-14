@@ -3,6 +3,7 @@ from .jogador_simples import JogadorSimples
 from .propriedade import Propriedade
 
 class JogadorAleatorio(JogadorSimples): 
+    tipo = 'Aleatorio'
     def compra_aluguel(self, propriedade: Propriedade, compra=False):
         if propriedade.proprietario:
             if propriedade.proprietario == self: #propriedade já deste jogador
